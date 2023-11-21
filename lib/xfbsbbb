@@ -1,0 +1,327 @@
+import 'package:flutter/material.dart';
+import 'custom_grid_widget.dart';
+import 'cards.dart';
+import 'tags_widget.dart';
+import 'bottom_design.dart';
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              widget(
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CircleAvatar(
+                        radius: 50.0,
+                        backgroundImage: AssetImage('assets/image.jpg'),
+                        child: Align(
+                          alignment: Alignment.bottomRight,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              shape: BoxShape.circle,
+                            ),
+                            width: 36.0,
+                            height: 36.0,
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.edit,
+                                color: Colors.white,
+                              ),
+                              onPressed: () {
+                                // Handle edit button press
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 30.0),
+                      // Existing goal, breakthrough, and lives impact widgets
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '23',
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                'Goal',
+                                style: TextStyle(
+                                  fontSize: 10.0,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(width: 40.0),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '24',
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                'BreakThrough',
+                                style: TextStyle(
+                                  fontSize: 9.0,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(width: 23.0),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '21',
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                'Lives Impact',
+                                style: TextStyle(
+                                  fontSize: 9.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(width: 30.0),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'John Doe',
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(width: 5.0),
+                          Icon(
+                            Icons.edit,
+                            color: Colors.grey,
+                            size: 18.0,
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 5.0),
+                      Text(
+                        'Family evolution goal',
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.grey,
+                        ),
+                      ),
+                      SizedBox(height: 5.0),
+                      Text(
+                        'Bio: Passionate about coding',
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  SizedBox(height: 15.0),
+                  // Three words in bars with shadow
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      _buildWordBar('My ATC'),
+                      _buildWordBar('Refferals'),
+                      _buildWordBar('calendar'),
+                    ],
+                  ),
+                  SizedBox(height: 20.0),
+                  // Another set of four normal words
+                  SizedBox(height: 20.0),
+                  // Words arranged vertically
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      _buildWord(
+                          'uP!', const Color.fromARGB(255, 176, 39, 119), 25.0),
+                      _buildWord('WISH', Color.fromARGB(255, 17, 1, 10), 25.0),
+                      // Using a Column for the words "Close the Deal"
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Close',
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.teal,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            'the',
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.teal,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            'Deal',
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.teal,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      _buildWord(
+                          'B!G', const Color.fromARGB(255, 163, 63, 181), 22.0),
+                    ],
+                  ),
+                  SizedBox(height: 20.0),
+                  // CustomGridWidget
+                  CustomGridWidget(),
+                  SizedBox(height: 20.0),
+                  // Three cards with images and titles
+                  Column(
+                    children: [
+                      CustomCard(
+                          title: 'Insert Video!',
+                          imagePath: 'assets/image1.jpg'),
+                      CustomCard(
+                          title: 'Insert video!',
+                          imagePath: 'assets/image2.jpg'),
+                      CustomCard(
+                          title: 'insert Video!',
+                          imagePath: 'assets/image3.jpg'),
+                    ],
+                  ),
+                  SizedBox(height: 20.0),
+                  Text(
+                    'Whats the breakthrough moment?',
+                    style: TextStyle(
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 10.0),
+                  // Single line input without input box
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border(bottom: BorderSide(color: Colors.black)),
+                    ),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Express in words',
+                        border: InputBorder.none,
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(height: 20.0),
+                  Text(
+                    'If this didnt happen, what would have been the paralle trajectory for you?',
+                    style: TextStyle(
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 10.0),
+                  // Single line input without input box
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border(bottom: BorderSide(color: Colors.black)),
+                    ),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Express in words',
+                        border: InputBorder.none,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20.0),
+                  Text(
+                    'Tags',
+                    style: TextStyle(
+                      fontSize: 17.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 10.0),
+                  TagsWidget(),
+                  SizedBox(height: 20.0),
+                  BottomDesign(),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildWordBar(String word) {
+    return Container(
+      padding: EdgeInsets.all(8.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Text(
+        word,
+        style: TextStyle(
+          fontSize: 16.0,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildWord(String word, Color color, double fontSize) {
+    return Text(
+      word,
+      style: TextStyle(
+        fontSize: fontSize,
+        fontWeight: FontWeight.bold,
+        color: color,
+      ),
+    );
+  }
+}
